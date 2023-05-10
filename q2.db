@@ -1,0 +1,11 @@
+ALTER TABLE Library_Branch
+ADD COLUMN LateFee DECIMAL(5,2);
+
+UPDATE Library_Branch
+SET LateFee = CASE
+    WHEN Branch_ID = 1 THEN 0.50
+    WHEN Branch_ID = 2 THEN 0.75
+    WHEN Branch_ID = 3 THEN 1.00
+    ELSE 0
+END;
+

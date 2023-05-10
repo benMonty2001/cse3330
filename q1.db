@@ -1,0 +1,9 @@
+ALTER TABLE book_loans
+ADD COLUMN Late INT;
+
+UPDATE book_loans
+SET Late = CASE
+    WHEN date_returned > due_date THEN 1
+    ELSE 0
+END;
+
